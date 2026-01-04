@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Standard Color Definitions */
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    --primary: 15 23 42;
+    --secondary: 241 245 249;
+  }
+
+  /* FIX: 'border-border' ko 'border-gray-200' ya similar standard class se replace kiya */
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-white text-slate-900 antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Optimized Shimmer Logic */
+  .visual-shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .visual-shimmer::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: wave-shimmer 2.5s infinite;
+  }
+
+  .brand-text-clip {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700;
+  }
+}
+
+@keyframes wave-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes atmosphere-glow {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: translateY(-8px);
+  }
+}
+
+.animate-atmosphere {
+  animation: atmosphere-glow 7s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
