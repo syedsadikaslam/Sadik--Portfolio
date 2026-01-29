@@ -5,7 +5,7 @@ const Parser = require('rss-parser');
 const router = express.Router();
 const parser = new Parser();
 
-const MEDIUM_RSS_URL = 'https://medium.com/feed/@mdsadiksadik464';
+const MEDIUM_RSS_URL = 'https://medium.com/feed/@mdsadiksadik464'; 
 
 router.get('/', async (req, res) => {
   try {
